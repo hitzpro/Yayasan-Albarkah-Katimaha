@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeri</title>
+    <link
+      rel="shortcut icon"
+      href="Logo/LOGO_YAYASAN.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a class="navbar-brand" href="/public/index.html">
+          <h4 class="logo-header">
+            <strong>Yayasan Al Barkah Katimaha</strong>
+          </h4>
+        </a>
+        <a class="btn-back" href="/public/index.html">Kembali</a>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <!-- Judul Galeri -->
+      <h2 class="text-center text-primary mb-4">Galeri</h2>
+      <hr />
+
+      <!-- Tab untuk Kategori -->
+      <div class="tab-buttons">
+        <button onclick="loadGallery('TK')">TK</button>
+        <button onclick="loadGallery('SDIT')">SDIT</button>
+        <button onclick="loadGallery('SMPIT')">SMPIT</button>
+      </div>
+
+      <!-- Galeri Container -->
+      <div class="galeri-container" id="galeri-container">
+        <!-- Foto-foto akan dimuat secara dinamis di sini -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 100px">
+      <div class="footer-container container">
+        <div class="footer-left">
+          <img
+            src="Logo/LOGO_YAYASAN.png"
+            alt="Logo Sekolah"
+            class="footer-logo"
+          />
+        </div>
+        <div class="footer-center">
+          <p>Jl. Pendidikan No.123, Jakarta</p>
+          <p>Email: email@sekolahxyz.com | Telepon: (021) 123-4567</p>
+        </div>
+        <div class="footer-right">
+          <a href="#" class="social-link">Facebook</a>
+          <a href="#" class="social-link">Instagram</a>
+          <a href="#" class="social-link">Twitter</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      let offset = 0;
+      const limit = 50;
+      let currentCategory = "TK";
+
+      // Fungsi untuk memuat gambar sesuai kategori
+      function loadGallery(category) {
+        currentCategory = category;
+        offset = 0;
+
+        document.getElementById("galeri-container").innerHTML = "";
+
+        loadImages();
+      }
+
+      function loadImages() {
+        fetch(
+          `scripts/galeri.php?offset=${offset}&limit=${limit}&category=${currentCategory}`
+        )
+          .then((response) => response.json())
+          .then((images) => {
+            if (images.error) {
+              console.error(images.error);
+              return;
+            }
+
+            const container = document.getElementById("galeri-container");
+
+            images.forEach((image) => {
+              const img = document.createElement("img");
+              img.src = `images/${currentCategory}/${image}`;
+              img.className = "galeri-image";
+              img.alt = "Galeri Foto";
+
+              // Tambahkan event listener untuk expand gambar saat diklik
+              img.addEventListener("click", () => toggleExpand(img));
+
+              container.appendChild(img);
+            });
+
+            offset += limit;
+          })
+          .catch((error) => console.error("Gagal memuat gambar:", error));
+      }
+
+      // Fungsi untuk expand dan close gambar
+      function toggleExpand(img) {
+        img.classList.toggle("expanded");
+
+        const overlay = document.querySelector(".overlay");
+        overlay.classList.toggle("active");
+      }
+
+      // Event listener untuk infinite scroll
+      window.addEventListener("scroll", () => {
+        if (
+          window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 500
+        ) {
+          loadImages();
+        }
+      });
+
+      // Close expanded image saat overlay diklik
+      document.addEventListener("click", (e) => {
+        const overlay = document.querySelector(".overlay");
+        if (
+          overlay.classList.contains("active") &&
+          !e.target.classList.contains("galeri-image")
+        ) {
+          document
+            .querySelector(".galeri-image.expanded")
+            ?.classList.remove("expanded");
+          overlay.classList.remove("active");
+        }
+      });
+
+      // Load kategori default pertama kali
+      loadGallery("TK");
+    </script>
+    <!-- Background overlay untuk gambar yang di-expand -->
+    <div class="overlay"></div>
+  </body>
+</html>
