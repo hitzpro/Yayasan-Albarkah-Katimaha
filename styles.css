@@ -1,0 +1,703 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Color Variables */
+:root {
+  --primary-color: #4caf50;
+  --secondary-color: #ffffff;
+  --text-color: #333;
+  --background-color: #f9f9f9;
+  --primary-hover: #45a049;
+  --secondary-hover: #e9e9e9;
+}
+
+/* Gaya untuk dropdown options */
+.dropdown-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dropdown-options .btn {
+  width: 100%;
+  max-width: 200px; /* Atur lebar tombol pilihan */
+}
+/* Gaya untuk tombol utama */
+#mainBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Arrow icon pada tombol */
+#arrowIcon {
+  transition: transform 0.3s ease;
+}
+
+/* Gaya untuk dropdown options */
+.dropdown-options {
+  display: none; /* Default tersembunyi */
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  max-width: 200px;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+}
+
+.dropdown-options .btn {
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+/* Saat dropdown muncul */
+.dropdown-options.show {
+  display: flex;
+  opacity: 1;
+  max-height: 150px; /* Sesuaikan dengan jumlah item */
+}
+/* Gaya untuk tombol utama */
+#mainBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Arrow icon pada tombol */
+#arrowIcon {
+  transition: transform 0.3s ease;
+}
+
+/* Gaya untuk dropdown options */
+.dropdown-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  max-width: 200px;
+  overflow: hidden;
+
+  /* Set initial values for smooth transition */
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+/* Saat dropdown muncul */
+.dropdown-options.show {
+  max-height: 150px; /* Sesuaikan dengan tinggi maksimum konten */
+  opacity: 1;
+}
+/* Gaya untuk tombol utama */
+#mainBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Arrow icon pada tombol */
+#arrowIcon {
+  transition: transform 0.3s ease;
+}
+
+/* Gaya untuk dropdown options */
+.dropdown-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  max-width: 200px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+/* Saat dropdown muncul */
+.dropdown-options.show {
+  max-height: 150px; /* Sesuaikan dengan tinggi maksimum konten */
+  opacity: 1;
+}
+
+/* Media query untuk perangkat mobile */
+@media (max-width: 600px) {
+  /* Kontainer untuk memastikan elemen tombol berada di tengah */
+  .tombol-tengah {
+    display: flex;
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+    width: 100%; /* Pastikan mengambil lebar penuh */
+    margin-top: 10px; /* Tambahkan margin atas jika diperlukan */
+  }
+
+  /* Gaya untuk dropdown options */
+  .dropdown-options {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center; /* Pusatkan anak elemen dalam kolom */
+  }
+
+  /* Gaya untuk tombol di dropdown */
+  .dropdown-options .btn {
+    max-width: 500px; /* Berikan lebar maksimum */
+    text-align: center; /* Pusatkan teks di dalam tombol */
+    transition: background-color 0.3s ease;
+  }
+}
+
+section {
+  margin-bottom: 100px;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-color);
+  padding: 15px 0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.navbar-nav .nav-link {
+  color: var(--secondary-color);
+  margin: 0 10px;
+  font-weight: bold;
+}
+.navbar-nav .nav-link:hover {
+  color: var(--secondary-hover);
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.navbar-nav .btn-primary {
+  background-color: var(--secondary-color);
+  border: none;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.navbar-nav .btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Style untuk nav item dengan dropdown */
+.nav-item.dropdown {
+  position: relative;
+}
+
+.nav-item .dropdown-menu {
+  display: none; /* Sembunyikan secara default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  border-radius: 5px;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+/* Dropdown item style */
+.dropdown-item {
+  padding: 8px 16px;
+  display: block;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Tampilkan dropdown saat di-hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Jika ingin dropdown muncul juga saat di klik */
+.nav-item.dropdown.active .dropdown-menu {
+  display: block;
+}
+
+/* Gaya untuk panah di sebelah Daftar Siswa */
+.nav-link .arrow-icon {
+  font-size: 0.8em;
+  transition: transform 0.3s ease;
+  margin-left: 5px;
+}
+
+/* Dropdown menu yang tersembunyi secara default */
+.dropdown-menu {
+  display: none; /* Tersembunyi secara default */
+  position: absolute;
+  top: 100%; /* Posisikan di bawah link Daftar Siswa */
+  left: 0;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  border-radius: 5px;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+/* Gaya dropdown item */
+.dropdown-item {
+  padding: 8px 16px;
+  display: block;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Tampilkan dropdown saat di-hover di desktop */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Untuk layar kecil */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static; /* Dropdown statis di bawah link */
+    display: none; /* Sembunyikan pada awalnya */
+    padding-left: 20px; /* Jarak kiri untuk tampilan hierarki */
+  }
+
+  .dropdown.show .dropdown-menu {
+    display: block; /* Tampilkan dropdown saat ada kelas "show" */
+  }
+}
+
+/* Hero Section with Sliding Carousel Background */
+.hero-section {
+  display: flex;
+  align-items: center;
+  padding: 150px 0;
+  color: white;
+  position: relative;
+  min-height: 40vh;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.hero-section .carousel-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%; /* Double width for sliding */
+  height: 100%;
+  display: flex;
+  transition: transform 1s ease-in-out;
+  animation: slideBackground 20s infinite;
+}
+
+.carousel-background img {
+  width: 50%; /* Half width for each image */
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes slideBackground {
+  0%,
+  50% {
+    transform: translateX(0);
+  }
+  50.1%,
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.hero-content {
+  max-width: 600px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  margin-left: 10%;
+  color: #333;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.hero-content p {
+  margin: 15px 0;
+  color: #555;
+}
+
+.hero-content .btn-primary {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 10px 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-content .btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Increased Spacing Between Sections */
+section {
+  padding: 80px 0; /* Increased padding for more spacing */
+}
+
+/* Pimpinan dan Visi Misi */
+.pimpinan-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.visi-misi {
+  max-width: 500px;
+}
+
+.visi-misi h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.foto-pimpinan {
+  text-align: center;
+  margin-top: 15px; /* Memberi jarak dengan elemen di atasnya */
+}
+
+.foto-pimpinan img {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pimpinan-name {
+  margin-top: 10px; /* Jarak antara foto dan nama */
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333; /* Warna teks agar kontras */
+}
+
+/* Card Section */
+.card-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1;
+  margin: 0 10px;
+  text-align: center;
+  border-bottom: 4px solid var(--primary-color);
+  transition: transform 0.3s;
+}
+
+.card img.card-img {
+  width: 100%; /* Mengatur agar gambar sesuai dengan lebar card */
+  height: 150px; /* Atur tinggi gambar sesuai kebutuhan */
+  object-fit: cover; /* Memastikan gambar terpotong agar sesuai tanpa distorsi */
+  border-radius: 8px 8px 0 0; /* Rounded corners hanya di atas */
+  margin-bottom: 15px; /* Jarak antara gambar dan judul */
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 15px 0;
+  font-style: italic;
+}
+
+.card .btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.card .btn-secondary:hover {
+  background-color: var(--secondary-hover);
+}
+
+/* Maps Section */
+.maps-section iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.maps-section h2 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 20px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
+  padding: 10px;
+}
+
+.footer-logo {
+  max-width: 100px;
+}
+
+.footer-center p {
+  margin: 5px 0;
+}
+
+.social-link {
+  color: var(--secondary-color);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.social-link:hover {
+  text-decoration: underline;
+}
+
+/* FAQ Section */
+.faq-section {
+  margin-bottom: 60px;
+}
+
+.faq-title {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.faq-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+  background-color: var(--primary-hover);
+}
+
+.faq-answer {
+  background-color: #f9f9f9;
+  padding: 15px;
+  display: none;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Menampilkan border bawah yang kecil */
+.faq-question::after {
+  content: "+";
+  float: right;
+  font-weight: bold;
+}
+
+.faq-question.active::after {
+  content: "-";
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+  /* Container Settings */
+  .container {
+    padding: 0 15px; /* Menambahkan padding samping untuk rapi di layar kecil */
+    box-sizing: border-box; /* Memastikan padding termasuk dalam lebar kontainer */
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 40px 15px; /* Menambahkan jarak atas dan samping */
+    min-height: 50vh;
+    text-align: center;
+    overflow: hidden; /* Menghindari overflow horizontal */
+  }
+
+  .hero-content {
+    margin-left: 0;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* FAQ Title */
+  .faq-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  /* Card Section */
+  .card-section {
+    display: flex;
+    flex-direction: column; /* Menumpuk card ke bawah */
+    align-items: center;
+    gap: 20px; /* Jarak antar card */
+    padding: 0 15px; /* Menambah padding samping */
+  }
+
+  .card {
+    width: 90%; /* Membuat card fit layar lebih kecil */
+    max-width: 550px; /* Membatasi ukuran maksimal card */
+    margin-bottom: 20px; /* Memberikan jarak antar card */
+  }
+
+  .card img.card-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+
+  /* Pimpinan dan Visi Misi Section */
+  .pimpinan-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px; /* Jarak antar elemen */
+    padding: 0 15px; /* Menambahkan padding samping */
+    width: 90%; /* Membuat card fit layar lebih kecil */
+    max-width: 650px; /* Membatasi ukuran maksimal card */
+    margin-bottom: 20px; /* Memberikan jarak antar card */
+  }
+
+  .visi-misi,
+  .foto-pimpinan {
+    max-width: 100%;
+  }
+
+  /* FAQ Section */
+  .faq-item {
+    font-size: 0.9rem;
+    width: 100%; /* FAQ agar lebih fit pada layar kecil */
+  }
+}
+
+/* Additional adjustments for very small screens */
+@media (max-width: 480px) {
+  /* Hero Content */
+  .pimpinan-name {
+    margin-top: 10px; /* Jarak antara foto dan nama */
+    font-size: 15rem;
+    font-weight: 600;
+    color: #333; /* Warna teks agar kontras */
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* FAQ Title */
+  .faq-title {
+    font-size: 1.3rem;
+  }
+
+  /* Card Section */
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  .card p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Universal Styling to Prevent Horizontal Overflow */
+body,
+html {
+  overflow-x: hidden; /* Prevents horizontal scrolling on all devices */
+  width: 100vw; /* Ensures the width stays within viewport */
+  margin: 0;
+  padding: 0;
+}
