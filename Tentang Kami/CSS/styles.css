@@ -1,0 +1,338 @@
+/* Color Variables */
+:root {
+  --primary-color: #4caf50;
+  --secondary-color: #ffffff;
+  --text-color: #333;
+  --background-color: #f9f9f9;
+  --primary-hover: #45a049;
+  --secondary-hover: #e9e9e9;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+/* Navbar Styles */
+.navbar {
+  background-color: #4caf50; /* Warna latar navbar */
+  padding: 15px 0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-brand {
+  color: white; /* Warna teks brand */
+  font-weight: bold; /* Menebalkan teks brand */
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #4caf50; /* Warna latar footer */
+  color: white; /* Warna teks footer */
+  padding: 20px 0; /* Padding atas dan bawah */
+  font-weight: bold;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px; /* Padding samping */
+}
+
+.footer-logo {
+  max-width: 100px; /* Ukuran maksimum logo */
+}
+
+.social-link {
+  color: white; /* Warna teks untuk link sosial */
+  text-decoration: none; /* Menghilangkan garis bawah */
+  margin: 0 10px; /* Margin antar link */
+}
+
+.social-link:hover {
+  text-decoration: underline; /* Garis bawah saat hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    width: 90%; /* Lebar kontainer di perangkat kecil */
+  }
+
+  .footer-container {
+    flex-direction: column; /* Mengatur footer menjadi kolom pada perangkat kecil */
+    align-items: flex-start; /* Menyelaraskan item di kiri */
+    text-align: left; /* Teks diratakan ke kiri */
+  }
+
+  .social-link {
+    margin: 5px 0; /* Margin vertikal antar link sosial */
+  }
+  
+}
+
+/* Logo Footer */
+.footer-logo {
+  max-width: 100px; /* Batas maksimal lebar logo footer */
+  height: auto; /* Tinggi otomatis untuk menjaga proporsi */
+}
+
+/* Menambahkan margin pada logo footer */
+.footer-left {
+  margin-right: 15px; /* Jarak kanan antara logo dan informasi footer */
+}
+
+/* Responsive Styles for Logos */
+@media (max-width: 768px) {
+  .logo-header {
+    max-width: 150px; /* Ukuran logo header di perangkat kecil */
+  }
+
+  .footer-logo {
+    max-width: 80px; /* Ukuran logo footer di perangkat kecil */
+  }
+}
+
+.logo-header:hover {
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: var(--secondary-color);
+}
+.btn-back {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 8px;
+  border-radius: 5px;
+  margin: 0 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  background-color: var(--secondary-hover);
+  color: var(--primary-color);
+  padding: 8px;
+  border-radius: 5px;
+  margin: 0 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section {
+  display: flex;
+  padding: 40px 20px;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Border left or right depending on section */
+.section:nth-child(odd) .section-text {
+  border-right: 5px solid var(--primary-color);
+  padding-right: 20px;
+}
+
+.section:nth-child(even) .section-text {
+  border-left: 5px solid var(--primary-color);
+  padding-left: 20px;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.section-text {
+  flex: 1;
+}
+
+.section-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-image img {
+  max-width: 80%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.section-image img:hover {
+  transform: scale(1.05);
+}
+
+/* Section Title */
+.section h2 {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 1.8em;
+}
+
+/* Carousel styling */
+.carousel-item img {
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.carousel-item img:hover {
+  transform: scale(1.05);
+}
+
+/* Carousel title styling */
+.carousel-item h3 {
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.carousel-item p {
+  font-size: 1em;
+  color: #666;
+}
+
+/* Carousel Indicators */
+.carousel-indicators li {
+  background-color: var(--primary-color);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.carousel-indicators .active {
+  background-color: var(--primary-hover);
+}
+
+/* Carousel controls styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    padding: 30px 15px;
+  }
+
+  .section-image img {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+/* Border di kiri dan kanan dengan warna primary */
+.section {
+  border-left: 5px solid var(--primary-color);
+  border-right: 5px solid var(--primary-color);
+}
+
+/* Tata letak carousel section */
+.carousel-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 20px;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid var(--primary-color);
+  border-right: 5px solid var(--primary-color);
+  margin-bottom: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Carousel Content (Text Section) */
+.carousel-section .carousel-content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+/* Carousel Container */
+.carousel-section .carousel-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Carousel Image Styling */
+.carousel-image {
+  max-width: 60%; /* Mengatur ukuran gambar */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.carousel-image:hover {
+  transform: scale(1.05);
+}
+
+/* Carousel Title and Description Styling */
+.carousel-container h3 {
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.carousel-container p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Styling for Indicators Wrapper */
+.carousel-indicators-wrapper {
+  margin-top: 10px;
+}
+
+.carousel-indicators {
+  margin-top: 15px;
+}
+
+.carousel-indicators li {
+  background-color: var(--primary-color);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: -20px 3px; /* Penyesuaian margin */
+}
+
+.carousel-indicators .active {
+  background-color: var(--primary-hover);
+}
+
+/* Carousel controls styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  padding: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: auto; /* Sesuaikan lebar tombol */
+}
