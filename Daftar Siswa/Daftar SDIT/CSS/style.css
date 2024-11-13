@@ -1,0 +1,171 @@
+/* Variabel warna */
+:root {
+  --primary-color: #28a745;
+  --primary-hover: #45a049;
+  --secondary-color: #ffffff;
+  --text-color: #333;
+  --background-color: #f9f9f9;
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --muted-color: #f8f9fa;
+  --muted-hover: #e2e6ea;
+  --border-muted: #dee2e6;
+}
+
+/* Gaya umum */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: var(--primary-color);
+  padding: 20px 0; /* Menambah padding atas dan bawah untuk tinggi lebih */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  min-height: 80px; /* Menambahkan tinggi minimum */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navbar-brand {
+  color: var(--secondary-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo-header {
+  margin: 0;
+}
+
+.btn-back {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: var(--secondary-hover);
+}
+.logo {
+  height: 50px;
+}
+
+/* Footer */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .logo {
+  height: 90px;
+  width: 90px;
+}
+.contact-info {
+  text-align: right;
+}
+.contact-info p {
+  margin: 0;
+  padding: 0;
+}
+#contact {
+  margin-top: 30px;
+}
+
+/* Form */
+.form-section {
+  margin-top: 40px;
+}
+.form-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+.form-group label {
+  color: var(--text-color);
+}
+.form-control {
+  border-color: var(--primary-color);
+}
+.form-control:focus {
+  border-color: var(--primary-hover);
+  box-shadow: 0 0 5px var(--primary-hover);
+}
+
+/* Tombol */
+.btn-submit,
+.btn-reset {
+  width: 100%; /* Memastikan tombol memiliki lebar yang sama */
+}
+.btn-submit {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  border-color: var(--accent-color);
+}
+.btn-submit:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+.btn-reset {
+  background-color: var(--muted-color);
+  color: #212529; /* Warna teks hitam */
+  border-color: var(--border-muted);
+}
+.btn-reset:hover {
+  background-color: var(--muted-hover);
+  border-color: #d3d9df; /* Border abu-abu saat hover */
+  color: var(--text-color);
+}
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-container .btn {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* Tambahan untuk elemen lain */
+footer {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 20px 0;
+}
+.footer .footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo {
+  max-width: 100px;
+}
+.footer-center p {
+  margin: 0;
+  color: var(--secondary-color);
+}
+.footer-right .social-link {
+  color: var(--secondary-color);
+  margin: 0 10px;
+  text-decoration: none;
+}
+.footer-right .social-link:hover {
+  color: var(--primary-hover);
+}

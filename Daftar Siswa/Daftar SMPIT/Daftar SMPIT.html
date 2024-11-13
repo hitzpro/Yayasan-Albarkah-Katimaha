@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar SMPIT</title>
+    <link rel="shortcut icon" href="/Logo/LOGO_YAYASAN.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="CSS/style.css?v=1" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a class="navbar-brand" href="/public/index.html">
+          <h4 class="logo-header">
+            <strong>Yayasan Al Barkah Katimaha</strong>
+          </h4>
+        </a>
+        <a class="btn-back" href="/public/index.html">Kembali</a>
+      </div>
+    </nav>
+    <br /><br />
+    <div class="container1 mt-5" style="margin: 50px">
+      <h4 class="text-center mb-4">
+        <strong
+          >Lihat Info Pembayaran dan Surat Persetujuan Murid SMPIT Baru Sebelum
+          Mendaftar</strong
+        >
+      </h4>
+      <hr />
+      <!-- Centered Button Container -->
+      <div class="btn-container">
+        <!-- Tombol untuk membuka Info Pembayaran PDF -->
+        <button id="btnOpenInfoPembayaran" class="btn btn-primary">
+          Info Pembayaran
+        </button>
+
+        <!-- Tombol untuk membuka Surat Persetujuan PDF -->
+        <button id="btnOpenSuratPersetujuan" class="btn btn-secondary">
+          Surat Persetujuan (Wajib di Download)
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk membuka Info Pembayaran PDF
+      document.getElementById("btnOpenInfoPembayaran").addEventListener("click", function() {
+          window.open("Form Harga SMPIT.pdf", "_blank"); // Ganti path dengan lokasi file Info Pembayaran
+      });
+    
+      // Fungsi untuk mengunduh Surat Persetujuan PDF
+      document.getElementById("btnOpenSuratPersetujuan").addEventListener("click", function() {
+          const link = document.createElement("a");
+          link.href = "Form Persetujuan SMPIT.pdf"; // Ganti path dengan lokasi file Surat Persetujuan
+          link.download = "surat_persetujuan.pdf"; // Nama file saat diunduh
+          link.click();
+      });
+    </script>
+    <br /><br />
+
+    <div class="container">
+      <form
+        id="form-pendaftaran-smpit"
+        method="post"
+        action="submit_daftar_smpit.php"
+        enctype="multipart/form-data"
+      >
+        <div class="form-section">
+          <h2><strong>A. KETERANGAN CALON PESERTA DIDIK</strong></h2>
+          <hr />
+          <div class="form-group row">
+            <label for="namaLengkap" class="col-sm-4 col-form-label"
+              >1. Nama Lengkap</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="namaLengkap"
+                name="namaLengkap"
+                placeholder="Nama Lengkap"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="namaPanggilan" class="col-sm-4 col-form-label"
+              >2. Nama Panggilan</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="namaPanggilan"
+                name="namaPanggilan"
+                placeholder="Nama Panggilan"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jenisKelamin" class="col-sm-4 col-form-label"
+              >3. Jenis Kelamin</label
+            >
+            <div class="col-sm-8">
+              <select
+                class="form-control"
+                id="jenisKelamin"
+                name="jenisKelamin"
+                required
+              >
+                <option value="">Pilih Jenis Kelamin</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nisn" class="col-sm-4 col-form-label">4. NISN</label>
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="nisn"
+                name="nisn"
+                placeholder="NISN (10 digit angka, contoh: 0008641320)"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tempatTanggalLahir" class="col-sm-4 col-form-label"
+              >5. Tempat, Tgl. Bln. Thn. Lahir</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="tempatTanggalLahir"
+                name="tempatTanggalLahir"
+                placeholder="Tempat, Tgl. Bln. Thn. Lahir"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="umur" class="col-sm-4 col-form-label">5A. Umur</label>
+            <div class="col-sm-8">
+              <input
+                type="number"
+                class="form-control"
+                id="umur"
+                name="umur"
+                placeholder="Umur"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kelas" class="col-sm-4 col-form-label"
+              >5B. Mendaftar untuk Kelas</label
+            >
+            <div class="col-sm-8">
+              <select class="form-control" id="kelas" name="kelas" required>
+                <option value="">Pilih Kelas</option>
+                <option value="7">Kelas 7</option>
+                <option value="8">Kelas 8</option>
+                <option value="9">Kelas 9</option>
+                <!-- Add more options if necessary -->
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="agama" class="col-sm-4 col-form-label">6. Agama</label>
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="agama"
+                name="agama"
+                placeholder="Agama"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="anakKe" class="col-sm-4 col-form-label"
+              >7. Anak Ke</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="anakKe"
+                name="anakKe"
+                placeholder="Anak Ke"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="statusKeluarga" class="col-sm-4 col-form-label"
+              >8. Status dalam Keluarga</label
+            >
+            <div class="col-sm-8">
+              <select
+                class="form-control"
+                id="statusKeluarga"
+                name="statusKeluarga"
+                required
+              >
+                <option value="">Pilih Status</option>
+                <option value="Anak Kandung">Anak Kandung</option>
+                <option value="Anak Tiri">Anak Tiri</option>
+                <option value="Anak Angkat">Anak Angkat</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jumlahSaudara" class="col-sm-4 col-form-label"
+              >9. Jumlah Saudara Kandung</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="jumlahSaudara"
+                name="jumlahSaudara"
+                placeholder="Jumlah Saudara Kandung"
+              />
+              <input
+                type="text"
+                class="form-control mt-2"
+                id="jumlahAdik"
+                name="jumlahAdik"
+                placeholder="Jumlah Adik"
+              />
+              <input
+                type="text"
+                class="form-control mt-2"
+                id="jumlahKakak"
+                name="jumlahKakak"
+                placeholder="Jumlah Kakak"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="alamatTinggal" class="col-sm-4 col-form-label"
+              >10. Alamat Tempat Tinggal</label
+            >
+            <div class="col-sm-8">
+              <textarea
+                class="form-control"
+                id="alamatTinggal"
+                name="alamatTinggal"
+                rows="3"
+                placeholder="Alamat Siswa"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="noTelp" class="col-sm-4 col-form-label"
+              >11. No. Telp. yang bisa dihubungi</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="noTelp"
+                name="noTelp"
+                placeholder="No. Telp. yang bisa dihubungi"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="alumni" class="col-sm-4 col-form-label"
+              >12. Alumni dari SD / MI Asal</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="alumni"
+                name="alumni"
+                placeholder="Alumni dari SD / MI Asal"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nilaiAkhir" class="col-sm-4 col-form-label"
+              >13. Nilai Akhir dan Nilai Rata-rata</label
+            >
+            <div class="col-sm-4">
+              <input
+                type="text"
+                class="form-control"
+                id="nilaiAkhir"
+                name="nilaiAkhir"
+                placeholder="Jumlah NA"
+              />
+            </div>
+            <div class="col-sm-4">
+              <input
+                type="text"
+                class="form-control"
+                id="nilaiRata"
+                name="nilaiRata"
+                placeholder="Nilai Rata-rata"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <br />
+          <h2><strong>B. KETERANGAN ORANG TUA KANDUNG</strong></h2>
+          <hr />
+          <div class="form-group row">
+            <label class="col-sm-12 col-form-label">1. Nama Orang Tua</label>
+          </div>
+          <div class="form-group row">
+            <label for="namaAyah" class="col-sm-4 col-form-label"
+              >a. Ayah</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="namaAyah"
+                name="namaAyah"
+                placeholder="Nama Ayah"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="namaIbu" class="col-sm-4 col-form-label">b. Ibu</label>
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="namaIbu"
+                name="namaIbu"
+                placeholder="Nama Ibu"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-12 col-form-label"
+              >2. Tempat, Tgl. Bln. Thn. Lahir Orang Tua</label
+            >
+          </div>
+          <div class="form-group row">
+            <label for="tempatTanggalLahirAyah" class="col-sm-4 col-form-label"
+              >a. Ayah</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="tempatTanggalLahirAyah"
+                name="tempatTanggalLahirAyah"
+                placeholder="Tempat, Tgl. Bln. Thn. Lahir Ayah"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tempatTanggalLahirIbu" class="col-sm-4 col-form-label"
+              >b. Ibu</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="tempatTanggalLahirIbu"
+                name="tempatTanggalLahirIbu"
+                placeholder="Tempat, Tgl. Bln. Thn. Lahir Ibu"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-12 col-form-label"
+              >3. Pekerjaan Orang Tua</label
+            >
+          </div>
+          <div class="form-group row">
+            <label for="pekerjaanAyah" class="col-sm-4 col-form-label"
+              >a. Ayah</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="pekerjaanAyah"
+                name="pekerjaanAyah"
+                placeholder="Pekerjaan Ayah"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="pekerjaanIbu" class="col-sm-4 col-form-label"
+              >b. Ibu</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="pekerjaanIbu"
+                name="pekerjaanIbu"
+                placeholder="Pekerjaan Ibu"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-12 col-form-label"
+              >4. Penghasilan Orang Tua rata-rata perbulan</label
+            >
+          </div>
+          <div class="form-group row">
+            <label for="penghasilanAyah" class="col-sm-4 col-form-label"
+              >a. Ayah</label
+            >
+            <div class="col-sm-8">
+              <select
+                class="form-control"
+                id="penghasilanAyah"
+                name="penghasilanAyah"
+              >
+                <option value="">Pilih Penghasilan</option>
+                <option value="kurang dari Rp. 2 Juta">
+                  kurang dari Rp. 2 Juta
+                </option>
+                <option value="antara Rp. 2 – 4 Juta">
+                  antara Rp. 2 – 4 Juta
+                </option>
+                <option value="lebih dari Rp. 4 Juta">
+                  lebih dari Rp. 4 Juta
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="penghasilanIbu" class="col-sm-4 col-form-label"
+              >b. Ibu</label
+            >
+            <div class="col-sm-8">
+              <select
+                class="form-control"
+                id="penghasilanIbu"
+                name="penghasilanIbu"
+              >
+                <option value="">Pilih Penghasilan</option>
+                <option value="kurang dari Rp. 2 Juta">
+                  kurang dari Rp. 2 Juta
+                </option>
+                <option value="antara Rp. 2 – 4 Juta">
+                  antara Rp. 2 – 4 Juta
+                </option>
+                <option value="lebih dari Rp. 4 Juta">
+                  lebih dari Rp. 4 Juta
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="alamatOrangTua" class="col-sm-4 col-form-label"
+              >5. Alamat Tempat Tinggal</label
+            >
+            <div class="col-sm-8">
+              <textarea
+                class="form-control"
+                id="alamatOrangTua"
+                name="alamatOrangTua"
+                rows="3"
+                placeholder="Alamat Orang Tua"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="noTelepon" class="col-sm-4 col-form-label"
+              >6. Nomer Telepon Aktif</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="number"
+                class="form-control"
+                id="noTelepon"
+                name="noTelepon"
+                placeholder="Nomer telepon yang aktif"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <br />
+          <h2><strong>C. KETERANGAN WALI</strong></h2>
+          <hr />
+          <div class="form-group row">
+            <label for="namaWali" class="col-sm-4 col-form-label"
+              >1. Nama Lengkap</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="namaWali"
+                name="namaWali"
+                placeholder="Nama Lengkap Wali"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jenisKelaminWali" class="col-sm-4 col-form-label"
+              >2. Jenis Kelamin</label
+            >
+            <div class="col-sm-8">
+              <select
+                class="form-control"
+                id="jenisKelaminWali"
+                name="jenisKelaminWali"
+              >
+                <option value="">Pilih Jenis Kelamin</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tempatTanggalLahirWali" class="col-sm-4 col-form-label"
+              >3. Tempat, Tgl. Bln. Thn. Lahir</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="tempatTanggalLahirWali"
+                name="tempatTanggalLahirWali"
+                placeholder="Tempat, Tgl. Bln. Thn. Lahir Wali"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="agamaWali" class="col-sm-4 col-form-label"
+              >4. Agama</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="agamaWali"
+                name="agamaWali"
+                placeholder="Agama Wali"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="pekerjaanWali" class="col-sm-4 col-form-label"
+              >5. Pekerjaan</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="pekerjaanWali"
+                name="pekerjaanWali"
+                placeholder="Pekerjaan Wali"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="alamatWali" class="col-sm-4 col-form-label"
+              >6. Alamat Tempat Tinggal</label
+            >
+            <div class="col-sm-8">
+              <textarea
+                class="form-control"
+                id="alamatTinggalWali"
+                name="alamatWali"
+                rows="3"
+                placeholder="Alamat Wali"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="penghasilanWali" class="col-sm-4 col-form-label"
+              >7. Penghasilan rata-rata perbulan</label
+            >
+            <div class="col-sm-8">
+              <select
+                class="form-control"
+                id="penghasilanWali"
+                name="penghasilanWali"
+              >
+                <option value="">Pilih Penghasilan</option>
+                <option value="kurang dari Rp. 2 Juta">
+                  kurang dari Rp. 2 Juta
+                </option>
+                <option value="antara Rp. 2 – 4 Juta">
+                  antara Rp. 2 – 4 Juta
+                </option>
+                <option value="lebih dari Rp. 4 Juta">
+                  lebih dari Rp. 4 Juta
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- Section Baru D. PERSYARATAN -->
+        <div class="form-section">
+          <br />
+          <h2><strong>D. PERSYARATAN</strong></h2>
+          <hr />
+
+          <div class="form-group row">
+            <label for="akteKelahiran" class="col-sm-4 col-form-label"
+              >1. Akte Kelahiran</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="file"
+                accept="application/pdf"
+                id="akteKelahiran"
+                name="akteKelahiran"
+                required
+              />
+              <small class="form-text text-muted"
+                >Unggah dalam format PDF.</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="kartuKeluarga" class="col-sm-4 col-form-label"
+              >2. Kartu Keluarga</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="file"
+                accept="application/pdf"
+                id="kartuKeluarga"
+                name="kartuKeluarga"
+                required
+              />
+              <small class="form-text text-muted"
+                >Unggah dalam format PDF.</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="fotoSiswa" class="col-sm-4 col-form-label">
+              3. Foto Siswa (ukuran 2 x 3 cm, background merah atau biru)
+            </label>
+            <div class="col-sm-8">
+              <input
+                type="file"
+                accept="image/*"
+                id="fotoSiswa"
+                name="fotoSiswa"
+                required
+              />
+              <small class="form-text text-muted">
+                Unggah foto dengan ukuran 2 x 3 cm dan background merah atau
+                biru.
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="col-sm-6">
+                <button type="submit" class="btn btn-primary btn-submit">
+                  Submit
+                </button>
+              </div>
+              <div class="col-sm-6">
+                <button type="reset" class="btn btn-secondary btn-reset">
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 100px">
+      <div class="footer-container container">
+        <div class="footer-left">
+          <img
+            src="Logo/LOGO_YAYASAN.png"
+            alt="Logo Sekolah"
+            class="footer-logo"
+          />
+        </div>
+        <div class="footer-center">
+          <p>Jl. Pendidikan No.123, Jakarta</p>
+          <p>Email: email@sekolahxyz.com | Telepon: (021) 123-4567</p>
+        </div>
+        <div class="footer-right">
+          <a href="#" class="social-link">Facebook</a>
+          <a href="#" class="social-link">Instagram</a>
+          <a href="#" class="social-link">Twitter</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
